@@ -1,0 +1,17 @@
+---
+import CollectionComponent from '../components/CollectionComponent.astro'
+import CollectionReactComp from '../components/CollectionReactComp.jsx'
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Finn Bowman</title>
+	</head>
+	<body>
+    <!-- <CollectionComponent /> -->
+    <CollectionReactComp client:visible/>
+	</body>
+</html>
