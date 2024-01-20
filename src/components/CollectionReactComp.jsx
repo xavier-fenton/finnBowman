@@ -1,6 +1,4 @@
-import React, { useEffect, useRef } from 'react'
 import data from '../data.json'
-import '../styles/index.css'
 
 const CollectionReactComp = () => {
   const shuffle = (array) => {
@@ -11,7 +9,7 @@ const CollectionReactComp = () => {
         return (
           <div key={a.value.id} id={a.value.id} className="group">
             <div className="cursor-pointer">
-              <div className="hidden border-4 rounded-lg border-grey-500 bg-black text-white p-2 group-hover:block">
+              <div className="hidden border-4 border-grey-500 bg-black text-white p-2 group-hover:block">
                 <div>{a.value.tag.brand_title}</div>
                 <div>
                   description:
