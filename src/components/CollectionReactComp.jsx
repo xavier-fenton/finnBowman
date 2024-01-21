@@ -7,9 +7,13 @@ const CollectionReactComp = () => {
       .sort((a, b) => a.sort - b.sort)
       .map((a) => {
         return (
-          <div key={a.value.id} id={a.value.id} className="group">
-            <div className="cursor-pointer">
-              <div className="hidden border-4 border-grey-500 bg-black text-white p-2 group-hover:block">
+          <div
+            key={a.value.id}
+            id={a.value.id}
+            className="group grid h-auto  filter grayscale blur-md contrast-200 hover:filter-none"
+          >
+            <div className="cursor-pointer relative">
+              <div className="hidden border-4 border-grey-500 bg-black text-white p-2 absolute bottom-[0px] md:h-[200px] group-hover:block animation-fade">
                 <div>{a.value.tag.brand_title}</div>
                 <div>
                   description:
