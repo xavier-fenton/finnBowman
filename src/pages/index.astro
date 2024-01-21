@@ -1,6 +1,7 @@
 ---
 import CollectionComponent from '../components/CollectionComponent.astro'
 import CollectionReactComp from '../components/CollectionReactComp.jsx'
+import NavComponent from '../components/NavComponent.astro'
 ---
 
 <html lang="en">
@@ -12,6 +13,7 @@ import CollectionReactComp from '../components/CollectionReactComp.jsx'
 	</head>
 	<body>
     <!-- <CollectionComponent /> -->
+    <NavComponent/>
     <CollectionReactComp client:visible/>
 	</body>
 </html>
