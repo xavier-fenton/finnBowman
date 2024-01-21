@@ -7,9 +7,9 @@ const CollectionReactComp = () => {
       .sort((a, b) => a.sort - b.sort)
       .map((a) => {
         return (
-          <div key={a.value.id} id={a.value.id} className="group">
+          <div key={a.value.id} id={a.value.id} className="group relative">
             <div className="cursor-pointer">
-              <div className="hidden border-4 border-grey-500 bg-black text-white p-2 group-hover:block">
+              <div className="transition ease-in opacity-0 delay-0 duration-500 absolute bottom-[0px] block border-4 border-grey-500 bg-black text-white p-2 group-hover:opacity-100">
                 <div>{a.value.tag.brand_title}</div>
                 <div>
                   description:
