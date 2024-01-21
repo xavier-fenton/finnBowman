@@ -1,51 +1,11 @@
 ---
+import CollectionReactComp from "./CollectionReactComp";
+import ThreeDTitle from "./ThreeDTitle.astro";
+
 ---
 
 
-<div class="grid grid-cols-2 md:grid-cols-4">
-  <div class="grid">
-    <div>arcade</div>
-      <div id="arcade">
-          <img class="h-auto max-w-full" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt="">
-      </div>
-      <div id="finn">
-          <img class="h-auto max-w-full" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="">
-      </div>
-      <div id="whatever">
-          <img class="h-auto max-w-full" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="">
-      </div>
-  </div>
-  <div class="grid">
-      <div>
-          <img class="h-auto max-w-full" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="">
-      </div>
-      <div>
-          <img class="h-auto max-w-full" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="">
-      </div>
-      <div>
-          <img class="h-auto max-w-full" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="">
-      </div>
-  </div>
-  <div class="grid">
-      <div>
-          <img class="h-auto max-w-full" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="">
-      </div>
-      <div>
-          <img class="h-auto max-w-full" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="">
-      </div>
-      <div>
-          <img class="h-auto max-w-full" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="">
-      </div>
-  </div>
-  <div class="grid">
-      <div>
-          <img class="h-auto max-w-full" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="">
-      </div>
-      <div>
-          <img class="h-auto max-w-full" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
-      </div>
-      <div>
-          <img class="h-auto max-w-full" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt="">
-      </div>
-  </div>
+<div class="absolute z-50 top-0 cursor-move">
+<ThreeDTitle />
 </div>
+<CollectionReactComp client:visible/>

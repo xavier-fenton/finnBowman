@@ -36,6 +36,6 @@ const CollectionReactComp = () => {
       </div>
     </>
   )
-} 
+}
 
 export default CollectionReactComp

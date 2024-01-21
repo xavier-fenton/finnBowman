@@ -2,6 +2,7 @@
 import CollectionComponent from '../components/CollectionComponent.astro'
 import CollectionReactComp from '../components/CollectionReactComp.jsx'
 import NavComponent from '../components/NavComponent.astro'
+import ThreeDTitle from '../components/ThreeDTitle.astro'
 ---
 
 <html lang="en">
@@ -10,10 +11,20 @@ import NavComponent from '../components/NavComponent.astro'
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Finn Bowman</title>
+    <script is:inline type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@v0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@v0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+    
 	</head>
 	<body>
     <!-- <CollectionComponent /> -->
+    <script is:inline type="module" src="/main.js"></script>
     <NavComponent/>
-    <CollectionReactComp client:visible/>
+    <CollectionComponent />
 	</body>
 </html>
