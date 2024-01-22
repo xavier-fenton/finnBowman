@@ -1,5 +1,5 @@
 ---
-
+import DropMenu from "./DropMenu.astro"
 ---
 
 <nav class="dark:bg-gray-900 fixed w-full z-20 top-0 start-0 pl-[20px] pt-[20px] pr-[20px] ">
@@ -9,15 +9,14 @@
   <div class="justify-between w-full h-full md:flex md:w-auto">
     <div class="flex flex-row font-semibold text-l gap-5 pt-[5px] md:pt-[0px] md:gap-20 ">
       <div>
-        <a href="#" class="block transition ease-in delay-0 duration-50 hover:text-white">Home</a>
+        <a href="/" class="block transition ease-in delay-0 duration-50 hover:text-[#d7d9de] hover:underline">Home</a>
       </div>
       <div>
-        <a href="#" class="block transition ease-in delay-0 duration-50 hover:text-white">Work
-        </a>
+        <DropMenu />
        
       </div>
       <div>
-        <a href="#" class="block transition ease-in delay-0 duration-50 hover:text-white">Contact</a>
+        <a href="#" class="block transition ease-in delay-0 duration-50 hover:text-[#d7d9de] hover:underline">Contact</a>
       </div>
      
     </div>

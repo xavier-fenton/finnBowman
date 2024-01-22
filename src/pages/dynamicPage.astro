@@ -1,0 +1,23 @@
+---
+import NavComponent from '../components/NavComponent.astro'
+import data from '../data.json'
+import Head from '../components/Head.astro'
+
+---
+<!-- This will be a dynamic page, based on the slug and tag name -->
+<Head />
+<NavComponent/>
+<div class="relative">
+<div class="flex justify-center items-center relative h-48 pt-[75px] md:pt-[10px]" >Dynamic Page Title</div>
+<div class="relative grid grid-cols-2 md:grid md:grid-cols-4 sm:grid-cols-2 gap-4 mx-5 ">
+  {data.map((data) => {
+        return ( 
+          <div class="flex justify-center">
+              <img class="w-[100%] object-cover aspect-[1/2] h-[175px] md:h-[500px]" src={data.img} alt=""/>
+          </div>
+      )
+    })}
+</div>
+</div>
+
+

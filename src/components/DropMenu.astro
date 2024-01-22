@@ -1,0 +1,28 @@
+---
+import data from '../data.json'
+---
+
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+
+
+<button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="transition ease-in delay-0 duration-50  hover:text-[#d7d9de] hover:underline">Work
+  </button>
+  
+  <!-- Dropdown menu -->
+  <div id="dropdownHover" class="z-10 hidden  bg-white divide-y divide-gray-100 shadow w-44 dark:bg-gray-700">
+      <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+        {data.map((data) => {
+
+            return(
+
+            <li>
+              <a href='/dynamicPage' class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{data.tag.brand}</a>
+            </li>
+            
+            )
+
+        })}
+       
+      </ul>
+  </div>
+  
