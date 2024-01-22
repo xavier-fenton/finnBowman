@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
+// Need to figure out resizing the canvas properly for now the current state is fine
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(
   75,
@@ -11,8 +12,9 @@ const camera = new THREE.PerspectiveCamera(
 )
 
 const renderer = new THREE.WebGLRenderer({ alpha: true })
-
-renderer.setSize(650, 150)
+const height = 150
+const width = 650
+renderer.setSize(width, height)
 
 renderer.setClearColor(0x000000, 0)
 
@@ -22,18 +24,43 @@ function setStyletoCanvas(renderer) {
   renderer.domElement.style.position = 'fixed'
   renderer.domElement.style.top = '0px'
   renderer.domElement.style.paddingLeft = '20px'
+  renderer.domElement.style.paddingRight = '20px'
   renderer.domElement.style.cursor = 'grab'
+  renderer.domElement.id = 'three'
+
   document.body.appendChild(renderer.domElement)
 }
 
 setStyletoCanvas(renderer)
 
-const light = new THREE.PointLight(0xffffff, 10, 10)
-light.position.set(0.4, 0.5, 0.5)
+const light = new THREE.PointLight(0xffffff, 2, 20, 2)
+light.position.set(1, 1, 1)
+
+light.position.x = -2
 scene.add(light)
 
+const light2 = new THREE.PointLight(0xffffff, 2, 20, 2)
+light2.position.set(1, 1, 1)
+
+light2.position.x = 2
+scene.add(light2)
+
+const light3 = new THREE.PointLight(0xffffff, 2, 20, 2)
+light3.position.set(1, 1, 1)
+
+light3.position.x = 1
+scene.add(light3)
+
+const light4 = new THREE.PointLight(0xffffff, 2, 20, 2)
+light4.position.set(1, 1, 1)
+
+light4.position.x = -1
+scene.add(light4)
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
+scene.add(directionalLight)
+
 const loader = new GLTFLoader()
-const color5 = new THREE.Color('white')
 
 loader.load(
   '/finnbowman_1.glb',
@@ -43,10 +70,8 @@ loader.load(
       return new Error('no obj found')
     }
 
-    obj.scene.children.map((data) => {
-      data.material.color.set(color5)
-    })
-
+    // console.log(obj.scene.children[0].material)
+    obj.scene.children[0].material.roughness = 1
     fitCameraToCenteredObject(camera, obj.scene, scene.offset, controls)
 
     scene.add(obj.scene)
@@ -136,13 +161,12 @@ function animate() {
   requestAnimationFrame(animate)
 
   rotateModel(scene)
-
   renderer.render(scene, camera)
 }
 
 function rotateModel(model) {
   setTimeout(() => {
-    model.rotation.y += 0.0025
+    model.rotation.y += 0.009
   }, 2500)
 }
 animate()
