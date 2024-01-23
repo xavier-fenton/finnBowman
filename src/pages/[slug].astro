@@ -1,0 +1,21 @@
+---
+import { sanityClient } from "sanity:client";
+
+export async function getStaticPaths() {
+  const posts = await sanityClient.fetch(`*[_type == "post"]`);
+  return posts.map(({ slug, title }) => {
+    return {
+      params: { slug: slug.current },
+      props: { title },
+    };
+  });
+}
+
+const { slug  } = Astro.params;
+const { title } = Astro.props;
+
+
+
+---
+
+<h1>{title}</h1>
