@@ -14,6 +14,8 @@ export default defineConfig({
       apiVersion: '2023-02-08',
       useCdn: false,
       studioBasePath: '/admin',
+      perspective: 'previewDrafts', // 'raw' | 'published' | 'previewDrafts'
+      token: import.meta.env.SECRET_SANITY_API_READ_TOKEN,
     }),
     react(),
   ],

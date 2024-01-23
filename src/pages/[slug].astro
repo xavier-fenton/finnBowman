@@ -1,21 +1,154 @@
 ---
 import { sanityClient } from "sanity:client";
+import NavComponent from '../components/NavComponent.astro'
+import data from '../data.json'
+import Head from '../components/Head.astro'
+
+import imageUrlBuilder from '@sanity/image-url'
+
+const is_preview = import.meta.env.SECRET_SANITY_API_READ_TOKEN
+const builder = imageUrlBuilder(sanityClient)
+  
+function urlFor(source) {
+        if( source === undefined ){
+          return null
+        } else return builder.image(source)
+      
+    }
+
 
 export async function getStaticPaths() {
-  const posts = await sanityClient.fetch(`*[_type == "post"]`);
-  return posts.map(({ slug, title }) => {
+
+      const builder = imageUrlBuilder(sanityClient)
+        
+      function urlFor(source) {
+              if( source === undefined ){
+                return null
+              } else return builder.image(source)
+            
+          }
+
+  const page = await sanityClient.fetch(`*[_type == "page"]`);
+  
+  
+  return page.map(({ slug, title, brandDescription, titleImage, gallery}) => {
+    
+    
+
+    
+  
+
+
+   
     return {
       params: { slug: slug.current },
-      props: { title },
+      props: { title, brandDescription, titleImage: urlFor(titleImage), gallery: gallery },
     };
   });
 }
 
-const { slug  } = Astro.params;
-const { title } = Astro.props;
+
+// trying to create content for previewing in studio
+
+/* if ( is_preview ) {
+
+	const page = await sanityClient.fetch(`*[_type == "post"]`);
+  
+  
+  return page.map(({ slug, title, brandDescription, titleImage }) => {
+    
+    const builder = imageUrlBuilder(sanityClient)
 
 
+    function urlFor(source) {
+        if( source === undefined ){
+          return null
+        } else return builder.image(source)
+      
+    }
+
+
+   
+    return {
+      params: { slug: slug.current },
+      props: { title, brandDescription, titleImage: urlFor(titleImage) },
+    };
+  });
+
+  
+} else {
+	const {page} = Astro.props;
+  console.log({page});
+  
+} */
+
+// --------- ^^^^^^^^^^^^^^ trying to create content for previewing in studio ^^^^^^^^^^------------
+
+
+const { title, brandDescription, titleImage: titleImage, gallery: gallery } = Astro.props;
+
+
+
+// data should look something like:
+
+
+// {
+//     "slug": "01HMHS6P13HZJSAQ8NBNQN9P1H",
+//     "img":"https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg",
+//     "title": "Mollit Lorem ad est ex nostrud eiusmod adipisicing commodo id.",
+//     "description": "Officia enim officia qui laborum laboris. Eu mollit qui irure nostrud cupidatat culpa consequat consequat velit  st",
+//     "tag": {
+//       "brand":"Arcade",
+//       "brand_title":"Arcade"
+//     }
+//   },
+
+
+const { slug } = Astro.params;
+
+
+
+function loadedSlug(){
+  if(!slug){
+    console.error('Something went wrong')
+  }
+  else console.log('loaded!');
+  
+}
+loadedSlug()
 
 ---
 
-<h1>{title}</h1>
+
+<Head />
+<NavComponent/>
+
+<div class="flex flex-col">
+<div class=`flex flex-col justify-center items-center relative pt-[96px] md:pt-[56px]`>
+<div class="h-full" >
+  {titleImage ? <img src={titleImage} /> : {title} }
+
+</div>
+  <div class=" px-[20px] pb-[20px] mx-[20px]">{brandDescription}</div>
+</div>
+
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mx-5">
+
+  
+  <!-- {gallery} -->
+  {gallery.map((data) => {
+    const source = urlFor(data)
+    
+    
+    return ( <div id="" class="">
+
+                <img class="" src={`${source}`} alt=""/>
+                
+                </div>
+            )
+          })}
+  
+  
+</div>
+</div>

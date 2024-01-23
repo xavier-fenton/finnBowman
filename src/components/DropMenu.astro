@@ -1,5 +1,13 @@
 ---
 import data from '../data.json'
+import { sanityClient } from "sanity:client";
+
+
+const content_slugs = await sanityClient.fetch(`*[_type == "page"]`);
+
+
+
+
 ---
 
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
@@ -11,12 +19,12 @@ import data from '../data.json'
   <!-- Dropdown menu -->
   <div id="dropdownHover" class="z-10 hidden  bg-white divide-y divide-gray-100 shadow w-44 dark:bg-gray-700">
       <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-        {data.map((data) => {
-
+        {content_slugs.map((data) => {
+          
             return(
 
             <li>
-              <a href='/dynamicPage' class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{data.tag.brand}</a>
+              <a href={`/${data.slug.current}`} class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{data.title}</a>
             </li>
             
             )
