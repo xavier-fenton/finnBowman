@@ -1,4 +1,12 @@
 ---
+import CollectionReactComp from "./CollectionReactComp";
+import ThreeDTitle from "./ThreeDTitle.astro";
+
+---
+
+
+<div class="absolute z-50 top-0 cursor-move">
+<ThreeDTitle />
 import { renderHTMLElement } from "astro/runtime/server/index.js"
 
 
@@ -66,3 +74,4 @@ const shuffle = (array) => {
   </div>
  
 </div>
+<CollectionReactComp client:visible/>
