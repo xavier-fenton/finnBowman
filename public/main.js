@@ -12,9 +12,8 @@ const camera = new THREE.PerspectiveCamera(
 )
 
 const renderer = new THREE.WebGLRenderer({ alpha: true })
-const height = 150
-const width = 650
-renderer.setSize(width, height)
+
+renderer.setSize(window.innerWidth, window.innerHeight)
 
 renderer.setClearColor(0x000000, 0)
 
@@ -70,7 +69,6 @@ loader.load(
       return new Error('no obj found')
     }
 
-    // console.log(obj.scene.children[0].material)
     obj.scene.children[0].material.roughness = 1
     fitCameraToCenteredObject(camera, obj.scene, scene.offset, controls)
 
