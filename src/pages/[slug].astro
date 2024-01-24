@@ -1,12 +1,11 @@
 ---
 import { sanityClient } from "sanity:client";
 import NavComponent from '../components/NavComponent.astro'
-import data from '../data.json'
 import Head from '../components/Head.astro'
 
 import imageUrlBuilder from '@sanity/image-url'
 
-const is_preview = import.meta.env.SECRET_SANITY_API_READ_TOKEN
+// const is_preview = import.meta.env.SECRET_SANITY_API_READ_TOKEN
 const builder = imageUrlBuilder(sanityClient)
   
 function urlFor(source) {
@@ -37,6 +36,7 @@ export async function getStaticPaths() {
 
     
   
+  // Page loader someone here? 
 
 
    
@@ -45,6 +45,9 @@ export async function getStaticPaths() {
       props: { title, brandDescription, titleImage: urlFor(titleImage), gallery: gallery },
     };
   });
+  // Page loader someone here?, When creating page it needs to build it first, so we shall make a builder page for that 
+
+
 }
 
 
@@ -52,30 +55,6 @@ export async function getStaticPaths() {
 
 /* if ( is_preview ) {
 
-	const page = await sanityClient.fetch(`*[_type == "post"]`);
-  
-  
-  return page.map(({ slug, title, brandDescription, titleImage }) => {
-    
-    const builder = imageUrlBuilder(sanityClient)
-
-
-    function urlFor(source) {
-        if( source === undefined ){
-          return null
-        } else return builder.image(source)
-      
-    }
-
-
-   
-    return {
-      params: { slug: slug.current },
-      props: { title, brandDescription, titleImage: urlFor(titleImage) },
-    };
-  });
-
-  
 } else {
 	const {page} = Astro.props;
   console.log({page});
@@ -126,7 +105,7 @@ loadedSlug()
 <div class="flex flex-col">
 <div class=`flex flex-col justify-center items-center relative pt-[96px] md:pt-[56px]`>
 <div class="h-full" >
-  {titleImage ? <img src={titleImage} /> : {title} }
+  {titleImage ? <img src={titleImage} /> : <div class=" font-bold">{title}</div> }
 
 </div>
   <div class=" px-[20px] pb-[20px] mx-[20px]">{brandDescription}</div>
@@ -137,7 +116,7 @@ loadedSlug()
 
   
   <!-- {gallery} -->
-  {gallery.map((data) => {
+  {gallery ? gallery.map((data) => {
     const source = urlFor(data)
     
     
@@ -147,7 +126,7 @@ loadedSlug()
                 
                 </div>
             )
-          })}
+          }) : null}
   
   
 </div>
