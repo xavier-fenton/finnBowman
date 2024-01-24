@@ -1,38 +1,82 @@
-import data from '../data.json'
+import { sanityClient } from 'sanity:client'
+import React, { useEffect, useState } from 'react'
 
-const CollectionReactComp = () => {
-  const shuffle = (array) => {
-    return array
-      .map((a) => ({ sort: Math.random(), value: a }))
-      .sort((a, b) => a.sort - b.sort)
-      .map((a) => {
-        return (
-          <div key={a.value.id} id={a.value.id} className="group relative">
-            <div className="cursor-pointer">
-              <div className="transition ease-in opacity-0 delay-0 duration-500 absolute bottom-[0px] block border-4 border-grey-500 bg-black text-white p-2 group-hover:opacity-100">
-                <div>{a.value.tag.brand_title}</div>
-                <div>
-                  description:
-                  <div>
-                    Ea sint veniam ea consequat officia fugiat pariatur dolor
-                    consectetur. Reprehenderit tempor consectetur anim ea
-                    exercitation. Laboris ea nisi magna voluptate ad nisi duis.
-                  </div>
-                </div>
-              </div>
-              <img className="h-auto" src={a.value.img} alt="" />
-            </div>
-          </div>
-        )
-      })
+import imageUrlBuilder from '@sanity/image-url'
+const page = await sanityClient
+  .fetch(`*[_type == "page"]`)
+  .catch((err) => new Error(err))
+
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
   }
+  return array
+}
+const CollectionReactComp = () => {
+  const [shuffledPage, setShuffledPage] = useState([])
+  const [selectedImage, setSelectedImage] = useState(null)
+  useEffect(() => {
+    const shuffledGallery = page.map((data) => ({
+      ...data,
+      gallery: data.gallery ? shuffleArray([...data.gallery]) : [],
+    }))
+
+    setShuffledPage(shuffledGallery)
+  }, [page])
+
+  const builder = imageUrlBuilder(sanityClient)
+
+  function urlFor(source) {
+    if (source === undefined) {
+      return null
+    } else return builder.image(source)
+  }
+
+  const openImage = (imageData) => {
+    setSelectedImage(imageData)
+  }
+
+  const closeImage = () => {
+    setSelectedImage(null)
+  }
+
   return (
     <>
-      <div className="grid grid-cols grid-cols-2 md:grid-cols-4">
-        <div className="">{shuffle(data)}</div>
-        <div className="">{shuffle(data)}</div>
-        <div className="">{shuffle(data)}</div>
-        <div className="">{shuffle(data)}</div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        {shuffledPage.map((data, pageIndex) => (
+          <div key={pageIndex}>
+            {data.gallery ? (
+              data.gallery.map((imageData, imageIndex) => (
+                <div key={imageIndex} className="relative overflow-hidden">
+                  <img
+                    className="w-full h-auto cursor-pointer"
+                    src={urlFor(imageData)}
+                    alt={`Gallery Image ${imageIndex}`}
+                    onClick={() => openImage(imageData)}
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="relative overflow-hidden">
+                <img src="/bird.JPG" alt="Default Image" />
+              </div>
+            )}
+          </div>
+        ))}
+
+        {selectedImage && (
+          <div
+            className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black bg-opacity-75"
+            onClick={closeImage}
+          >
+            <img
+              src={urlFor(selectedImage)}
+              alt="Selected Image"
+              className="object-contain max-h-full max-w-full"
+            />
+          </div>
+        )}
       </div>
     </>
   )
