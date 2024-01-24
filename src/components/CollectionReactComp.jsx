@@ -50,7 +50,7 @@ const CollectionReactComp = () => {
               data.gallery.map((imageData, imageIndex) => (
                 <div key={imageIndex} className="relative overflow-hidden">
                   <img
-                    className="w-full h-auto cursor-pointer"
+                    className="w-full h-auto transition ease-in delay-0 duration-50 cursor-pointer opacity-75 hover:opacity-100"
                     src={urlFor(imageData)}
                     alt={`Gallery Image ${imageIndex}`}
                     onClick={() => openImage(imageData)}

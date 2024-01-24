@@ -64,7 +64,6 @@ const loader = new GLTFLoader()
 loader.load(
   '/finnbowman_1.glb',
   function (obj) {
-    console.log()
     if (!obj) {
       return new Error('no obj found')
     }
@@ -153,6 +152,12 @@ const fitCameraToCenteredObject = function (
     // prevent camera from zooming out far enough to create far plane cutoff
     orbitControls.maxDistance = cameraToFarEdge * 2
   }
+}
+window.addEventListener('resize', onWindowResize, false)
+function onWindowResize() {
+  camera.aspect = window.innerWidth / window.innerHeight
+  camera.updateProjectionMatrix()
+  renderer.setSize(window.innerWidth, window.innerHeight)
 }
 
 function animate() {
