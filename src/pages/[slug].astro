@@ -1,0 +1,93 @@
+---
+import { sanityClient } from "sanity:client";
+import NavComponent from '../components/NavComponent.astro'
+import SlugGallery from '../components/SlugGallery.jsx'
+
+import Head from '../components/Head.astro'
+
+import imageUrlBuilder from '@sanity/image-url'
+
+// const is_preview = import.meta.env.SECRET_SANITY_API_READ_TOKEN
+const builder = imageUrlBuilder(sanityClient)
+  
+function urlFor(source) {
+        if( source === undefined ){
+          return null
+        } else return builder.image(source)
+      
+    }
+
+
+export async function getStaticPaths() {
+
+      const builder = imageUrlBuilder(sanityClient)
+        
+     function urlFor(source){
+              if(source === undefined ){
+                return null
+              } else return builder.image(source)
+            
+          }
+
+  const page = await sanityClient.fetch(`*[_type == "page"]`);
+  
+  
+  return page.map(({ slug, title, brandDescription, titleImage, gallery}) => {
+    
+    
+
+    
+  
+  // Page loader someone here? 
+
+
+   
+    return {
+      params: { slug: slug.current },
+      props: { title, brandDescription, titleImage: urlFor(titleImage), gallery: gallery },
+    };
+  });
+  // Page loader someone here?, When creating page it needs to build it first, so we shall make a builder page for that 
+
+
+}
+
+
+// trying to create content for previewing in studio
+
+/* if ( is_preview ) {
+
+} else {
+	const {page} = Astro.props;
+  console.log({page});
+  
+} */
+
+// --------- ^^^^^^^^^^^^^^ trying to create content for previewing in studio ^^^^^^^^^^------------
+
+
+const { title, brandDescription, titleImage: titleImage, gallery: gallery } = Astro.props;
+
+
+
+const { slug } = Astro.params;
+
+
+
+function loadedSlug(){
+  if(!slug){
+    console.error('Something went wrong')
+  }
+  else console.log('loaded!');
+  
+}
+loadedSlug()
+
+---
+
+
+<Head />
+<NavComponent/>
+
+<SlugGallery data={Astro.props} client:visible />
+
