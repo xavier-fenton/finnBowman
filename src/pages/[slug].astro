@@ -1,6 +1,8 @@
 ---
 import { sanityClient } from "sanity:client";
 import NavComponent from '../components/NavComponent.astro'
+import SlugGallery from '../components/SlugGallery.jsx'
+
 import Head from '../components/Head.astro'
 
 import imageUrlBuilder from '@sanity/image-url'
@@ -20,8 +22,8 @@ export async function getStaticPaths() {
 
       const builder = imageUrlBuilder(sanityClient)
         
-      function urlFor(source) {
-              if( source === undefined ){
+     function urlFor(source){
+              if(source === undefined ){
                 return null
               } else return builder.image(source)
             
@@ -68,21 +70,6 @@ const { title, brandDescription, titleImage: titleImage, gallery: gallery } = As
 
 
 
-// data should look something like:
-
-
-// {
-//     "slug": "01HMHS6P13HZJSAQ8NBNQN9P1H",
-//     "img":"https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg",
-//     "title": "Mollit Lorem ad est ex nostrud eiusmod adipisicing commodo id.",
-//     "description": "Officia enim officia qui laborum laboris. Eu mollit qui irure nostrud cupidatat culpa consequat consequat velit  st",
-//     "tag": {
-//       "brand":"Arcade",
-//       "brand_title":"Arcade"
-//     }
-//   },
-
-
 const { slug } = Astro.params;
 
 
@@ -102,32 +89,5 @@ loadedSlug()
 <Head />
 <NavComponent/>
 
-<div class="flex flex-col">
-<div class=`flex flex-col justify-center items-center relative pt-[96px] md:pt-[56px]`>
-<div class="h-full" >
-  {titleImage ? <img src={titleImage} /> : <div class=" font-bold">{title}</div> }
+<SlugGallery data={Astro.props} client:visible />
 
-</div>
-  <div class=" px-[20px] pb-[20px] mx-[20px]">{brandDescription}</div>
-</div>
-
-
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mx-5">
-
-  
-  <!-- {gallery} -->
-  {gallery ? gallery.map((data) => {
-    const source = urlFor(data)
-    
-    
-    return ( <div id="" class="">
-
-                <img class="" src={`${source}`} alt=""/>
-                
-                </div>
-            )
-          }) : null}
-  
-  
-</div>
-</div>
