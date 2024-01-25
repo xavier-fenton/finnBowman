@@ -1,12 +1,22 @@
 ---
 
 ---
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <meta name="generator" content={Astro.generator} />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
   <title>Finn Bowman</title>
+  <script is:inline type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@v0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@v0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script is:inline type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
   <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 </head>

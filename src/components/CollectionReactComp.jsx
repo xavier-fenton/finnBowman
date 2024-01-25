@@ -41,6 +41,14 @@ const CollectionReactComp = () => {
     setSelectedImage(null)
   }
 
+  function filter() {
+    const canvas = document.getElementsByTagName('canvas')[0]
+
+    canvas.className = 'filter grayscale blur-sm contrast-200'
+  }
+
+  filter()
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
