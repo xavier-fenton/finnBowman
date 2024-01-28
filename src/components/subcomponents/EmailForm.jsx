@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react'
 import emailjs from '@emailjs/browser'
+import InstaComponent from './InstaComponent'
 
 export default function EmailForm() {
   const [display, setDisplay] = useState('none')
@@ -42,7 +43,7 @@ export default function EmailForm() {
   filter()
   return (
     <>
-      <div className="relative z-10 flex items-center justify-center h-screen p-5">
+      <div className="relative z-10 flex flex-col-reverse items-center justify-center h-screen p-5">
         <div className="mx-auto w-full max-w-[550px] max-lg:mx-[0px]">
           <form ref={form} id="contact-form" onSubmit={sendEmail}>
             <div className="mb-5">
@@ -107,6 +108,7 @@ export default function EmailForm() {
             </div>
           </form>
         </div>
+        <InstaComponent />
       </div>
     </>
   )

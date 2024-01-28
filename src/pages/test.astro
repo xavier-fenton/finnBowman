@@ -1,7 +1,26 @@
 ---
+import { sanityClient } from "sanity:client";
+
+const url_source = await sanityClient.fetch(`*[_type == "page"]`);
+
+const filter_youtubeLinks = url_source.filter((data) => {
+console.log(data);
+
+  return data.youtubelink
+  
+})
+let map_youtubeLinks: any = [...filter_youtubeLinks].map((data) => {
+  return data.youtubelink.url
+  
+})
+let source = map_youtubeLinks[0]
+console.log(source);
+
 
 ---
-
+<div class="z-50">
+  <iframe width="560" height="315" src={source} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 <script is:inline type="importmap">
   {
     "imports": {

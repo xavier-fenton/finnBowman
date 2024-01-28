@@ -32,7 +32,7 @@ export async function getStaticPaths() {
   const page = await sanityClient.fetch(`*[_type == "page"]`);
   
   
-  return page.map(({ slug, title, brandDescription, titleImage, gallery}) => {
+  return page.map(({ slug, title, brandDescription, titleImage, gallery, youtubelink }) => {
     
     
 
@@ -44,7 +44,7 @@ export async function getStaticPaths() {
    
     return {
       params: { slug: slug.current },
-      props: { title, brandDescription, titleImage: urlFor(titleImage), gallery: gallery },
+      props: { title, brandDescription, titleImage: urlFor(titleImage), gallery: gallery, youtubelink: youtubelink },
     };
   });
   // Page loader someone here?, When creating page it needs to build it first, so we shall make a builder page for that 
@@ -66,7 +66,7 @@ export async function getStaticPaths() {
 // --------- ^^^^^^^^^^^^^^ trying to create content for previewing in studio ^^^^^^^^^^------------
 
 
-const { title, brandDescription, titleImage: titleImage, gallery: gallery } = Astro.props;
+const { title, brandDescription, titleImage: titleImage, gallery: gallery, youtubelink: youtubelink } = Astro.props;
 
 
 
@@ -83,11 +83,12 @@ function loadedSlug(){
 }
 loadedSlug()
 
----
 
+---
 
 <Head />
 <NavComponent/>
 
-<SlugGallery data={Astro.props} client:visible />
+<SlugGallery data={Astro.props} client:only />
+
 
