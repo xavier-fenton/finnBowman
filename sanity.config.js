@@ -3,7 +3,7 @@ import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './studio/schemas'
 import { presentationTool } from 'sanity/presentation'
-import { locate } from './locate'
+import { locate } from './studio/locate.js'
 
 export default defineConfig({
   name: 'default',
