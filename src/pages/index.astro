@@ -1,29 +1,12 @@
 ---
 import CollectionComponent from '../components/CollectionComponent.astro'
-import CollectionReactComp from '../components/CollectionReactComp.jsx'
+import Head from '../components/Head.astro'
 import NavComponent from '../components/NavComponent.astro'
-import ThreeDTitle from '../components/ThreeDTitle.astro'
 
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
-		<title>Finn Bowman</title>
-    <script is:inline type="importmap">
-      {
-        "imports": {
-          "three": "https://unpkg.com/three@v0.160.0/build/three.module.js",
-          "three/addons/": "https://unpkg.com/three@v0.160.0/examples/jsm/"
-        }
-      }
-    </script>
-    
-    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-	</head>
+	<Head/>
 	<body>
     <!-- <CollectionComponent /> -->
     <script is:inline type="module" src="/main.js"></script>
