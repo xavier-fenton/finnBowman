@@ -16,7 +16,7 @@ const content_slugs = await sanityClient.fetch(`*[_type == "page"]`);
   </button>
   
   <!-- Dropdown menu -->
-  <div id="dropdownHover" class="z-10 hidden  bg-white divide-y divide-gray-100 shadow w-44 dark:bg-gray-700">
+  <div id="dropdownHover" class="z-10 hidden  bg-white divide-y divide-gray-100 shadow w-44">
       <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
         {content_slugs.map((data) => {
           
