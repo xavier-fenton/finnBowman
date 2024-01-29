@@ -15,11 +15,15 @@
     "sanity"
   ],
   "dependencies": {
+    "@sanity/client": "^6.12.3",
+    "@sanity/overlays": "^2.3.8",
+    "@sanity/react-loader": "^1.8.0",
     "@sanity/vision": "^3.25.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
-    "sanity": "^3.25.0",
+    "rxjs": "^7.8.1",
+    "sanity": "^3.26.1",
     "styled-components": "^6.0.7"
   },
   "devDependencies": {

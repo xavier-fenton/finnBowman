@@ -25,6 +25,11 @@ export default defineType({
       type: 'image',
     }),
     defineField({
+      name: 'youtubelink',
+      title: 'YouTube Link',
+      type: 'youtube',
+    }),
+    defineField({
       name: 'brandDescription',
       title: 'Brand Description',
       type: 'text',

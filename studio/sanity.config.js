@@ -2,6 +2,8 @@ import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemas'
+import {presentationTool} from 'sanity/presentation'
+import {locate} from './locate'
 
 export default defineConfig({
   name: 'default',
@@ -10,7 +12,15 @@ export default defineConfig({
   projectId: 'gdu2whhg',
   dataset: 'production',
 
-  plugins: [structureTool(), visionTool()],
+  plugins: [
+    structureTool(),
+    visionTool(),
+    presentationTool({
+      // Required: set the base URL to the preview location in the front end
+      previewUrl: 'http://localhost:4321/',
+      locate: locate,
+    }),
+  ],
 
   schema: {
     types: schemaTypes,

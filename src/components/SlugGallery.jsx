@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
 import imageUrlBuilder from '@sanity/image-url'
 import { sanityClient } from 'sanity:client'
+import IFrameComponent from './IFrameComponent.jsx'
+
 const SlugGallery = ({ data }) => {
   const builder = imageUrlBuilder(sanityClient)
+
   function urlFor(source) {
-    if (source === undefined) {
-      return null
-    } else return builder.image(source)
+    return builder.image(source)
   }
+  const youtube_source = data.youtubelink
 
   // State for the selected image
   const [selectedImage, setSelectedImage] = useState(null)
@@ -25,46 +27,53 @@ const SlugGallery = ({ data }) => {
   return (
     <div className="flex flex-col">
       <div className="flex flex-col justify-center items-center relative pt-[96px] md:pt-[56px]">
-        <div className="h-full">
+        <div className="h-full flex flex-col">
           {data.titleImage ? (
             <img
-              src={`${data.titleImage}`}
-              onClick={() => openImage({ original: `${data.titleImage}` })}
+              src={`${urlFor(data.titleImage.options.source)}`}
               className="cursor-pointer"
             />
           ) : (
-            <div className="font-bold">{data.title}</div>
+            <div className="flex flex-col items-center pb-[20px]">
+              {youtube_source ? (
+                <>
+                  <IFrameComponent youtube_source={youtube_source.url} />
+                  <div className="font-bold">{data.title}</div>
+                </>
+              ) : (
+                <div className="font-bold"></div>
+              )}
+            </div>
           )}
         </div>
-        <div className="px-[20px] pb-[20px] mx-[20px]">
-          {data.brandDescription}
-        </div>
 
-        <div
-          key={data._id}
-          className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-5"
-          // className="flex flex-wrap wrap"
-        >
-          {data.gallery
-            ? data.gallery.map((data, index) => {
-                const source = urlFor(data)
+        <div className="pb-[20px]">{data.brandDescription}</div>
+      </div>
 
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center justify-center flex-col relative overflow-hidden cursor-pointer"
-                    onClick={() => openImage({ original: source })}
-                  >
-                    <img
-                      className="w-full h-auto"
-                      src={`${source}`}
-                      alt={`Gallery Image ${index}`}
-                    />
-                  </div>
-                )
-              })
-            : null}
-        </div>
+      <div className="columns-1 gap-2 mx-2 p-2 sm:columns-2 sm:gap-2 md:columns-3 lg:columns-4 [&>img:not(:first-child)]:pt-2">
+        {data.gallery.map((imageData, index) => {
+          const source = urlFor(imageData)
+          if (index === 0) {
+            return (
+              <img
+                key={index}
+                className="w-[100%] h-[50%] object-cover cursor-pointer pt-2"
+                src={`${source}`}
+                alt={`Gallery Image ${index}`}
+                onClick={() => openImage({ original: source })}
+              />
+            )
+          } else
+            return (
+              <img
+                key={index}
+                className="w-[100%] h-[50%] object-cover cursor-pointer"
+                src={`${source}`}
+                alt={`Gallery Image ${index}`}
+                onClick={() => openImage({ original: source })}
+              />
+            )
+        })}
       </div>
 
       {selectedImage && (
