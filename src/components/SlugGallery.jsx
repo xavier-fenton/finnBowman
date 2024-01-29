@@ -50,7 +50,7 @@ const SlugGallery = ({ data }) => {
         <div className="pb-[20px]">{data.brandDescription}</div>
       </div>
 
-      <div className="columns-1 gap-2 mx-2 sm:columns-2 sm:gap-2 md:columns-3 lg:columns-4 [&>img:not(:first-child)]:pt-2">
+      <div className="columns-1 gap-2 mx-2 p-2 sm:columns-2 sm:gap-2 md:columns-3 lg:columns-4 [&>img:not(:first-child)]:pt-2">
         {data.gallery.map((imageData, index) => {
           const source = urlFor(imageData)
           if (index === 0) {
