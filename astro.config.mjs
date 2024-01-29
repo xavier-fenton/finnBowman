@@ -15,7 +15,6 @@ export default defineConfig({
       useCdn: false,
       studioBasePath: '/admin',
       perspective: 'previewDrafts', // 'raw' | 'published' | 'previewDrafts'
-      token: import.meta.env.SECRET_SANITY_API_READ_TOKEN,
     }),
     react(),
   ],

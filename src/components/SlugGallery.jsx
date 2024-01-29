@@ -36,11 +36,13 @@ const SlugGallery = ({ data }) => {
           ) : (
             <div className="flex flex-col items-center pb-[20px]">
               {youtube_source ? (
-                <IFrameComponent youtube_source={youtube_source.url} />
+                <>
+                  <IFrameComponent youtube_source={youtube_source.url} />
+                  <div className="font-bold">{data.title}</div>
+                </>
               ) : (
                 <div className="font-bold"></div>
               )}
-              <div className="font-bold">{data.title}</div>
             </div>
           )}
         </div>

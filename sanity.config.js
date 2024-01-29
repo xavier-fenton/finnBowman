@@ -3,9 +3,7 @@ import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './studio/schemas'
 import { presentationTool } from 'sanity/presentation'
-// import { locate } from './locate'
-
-const SANITY_STUDIO_PREVIEW_URL = 'http://localhost:4321/'
+import { locate } from './locate'
 
 export default defineConfig({
   name: 'default',
@@ -19,7 +17,8 @@ export default defineConfig({
     visionTool(),
     presentationTool({
       // Required: set the base URL to the preview location in the front end
-      previewUrl: SANITY_STUDIO_PREVIEW_URL,
+      previewUrl: 'http://localhost:4321/',
+      locate: locate,
     }),
   ],
 
