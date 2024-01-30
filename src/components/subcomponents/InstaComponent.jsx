@@ -3,7 +3,6 @@ import { sanityClient } from 'sanity:client'
 const instalink = (
   await sanityClient.fetch(`*[_type == "link"]`).catch((err) => new Error(err))
 )[0]
-console.log(instalink)
 const InstaComponent = () => {
   return (
     <div className="flex flex-row gap-2 items-center pb-2">
