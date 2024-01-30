@@ -38,6 +38,8 @@ export default function EmailForm() {
     const canvas = document.getElementsByTagName('canvas')[0]
 
     canvas.className = 'filter grayscale blur-md contrast-200'
+
+    
   }
 
   filter()

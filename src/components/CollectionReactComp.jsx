@@ -41,13 +41,13 @@ const CollectionReactComp = () => {
     setSelectedImage(null)
   }
 
-  function filter() {
-    const canvas = document.getElementsByTagName('canvas')[0]
+  // function filter() {
+  //   const canvas = document.getElementsByTagName('canvas')[0]
 
-    canvas.className = 'filter grayscale blur-sm contrast-200'
-  }
+  //   canvas.className = 'filter grayscale blur-sm contrast-200'
+  // }
 
-  filter()
+  // filter()
 
   return (
     <>
