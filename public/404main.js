@@ -26,38 +26,15 @@ const controls = new OrbitControls(camera, renderer.domElement)
 function setStyletoCanvas(renderer) {
   renderer.domElement.style.cursor = 'grab'
   renderer.domElement.id = 'three'
+  renderer.domElement.class
+    ? (renderer.domElement.class = 'filter grayscale blur-sm contrast-200')
+    : (renderer.domElement.className = 'filter grayscale blur-sm contrast-200')
 
   document.body.appendChild(renderer.domElement)
 }
 
 setStyletoCanvas(renderer)
 
-// const light = new THREE.PointLight(0xffffff, 2, 20, 2)
-// light.position.set(1, 1, 1)
-
-// light.position.x = -2
-// scene.add(light)
-
-// const light2 = new THREE.PointLight(0xffffff, 2, 20, 2)
-// light2.position.set(1, 1, 1)
-
-// light2.position.x = 2
-// scene.add(light2)
-
-// const light3 = new THREE.PointLight(0xffffff, 2, 20, 2)
-// light3.position.set(1, 1, 1)
-
-// light3.position.x = 1
-// scene.add(light3)
-
-// const light4 = new THREE.PointLight(0xffffff, 2, 20, 2)
-// light4.position.set(1, 1, 1)
-
-// light4.position.x = -1
-// scene.add(light4)
-
-// const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
-// scene.add(directionalLight)
 
 const pointLight = new THREE.PointLight(0xffffff, 100)
 camera.add(pointLight)
