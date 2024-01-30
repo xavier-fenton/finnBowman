@@ -3,13 +3,18 @@ import CollectionComponent from '../components/CollectionComponent.astro'
 import Head from '../components/Head.astro'
 import NavComponent from '../components/NavComponent.astro'
 
+import WebGL from 'three/addons/capabilities/WebGL.js'
 ---
 
 <html lang="en">
 	<Head/>
 	<body>
     <!-- <CollectionComponent /> -->
-    <script is:inline type="module" src="/main.js"></script>
+
+<script is:inline type="module" src="/main.js"></script>
+     
+    
+    
     <NavComponent/>
     <CollectionComponent />
 	</body>
