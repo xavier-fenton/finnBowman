@@ -4,7 +4,8 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js'
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
-import { OutputPass } from 'three/addons/postprocessing/OutputPass.js'
+import WebGL from 'three/addons/capabilities/WebGL.js'
+
 // Need to figure out resizing the canvas properly for now the current state is fine
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(
@@ -190,4 +191,10 @@ function rotateModel(model) {
     model.rotation.y += 0.009
   }, 2500)
 }
-animate()
+if (WebGL.isWebGLAvailable()) {
+  // Initiate function or other initializations here
+  console.log('ThreeJS is compatiable with this device: ', navigator.userAgent)
+  animate()
+} else {
+  !animate()
+}
