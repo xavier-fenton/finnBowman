@@ -21,13 +21,18 @@ renderer.setClearColor(0x000000, 0)
 const controls = new OrbitControls(camera, renderer.domElement)
 
 function setStyletoCanvas(renderer) {
+  console.log(renderer.domElement)
   renderer.domElement.style.position = 'fixed'
   renderer.domElement.style.top = '0px'
   renderer.domElement.style.paddingLeft = '20px'
   renderer.domElement.style.paddingRight = '20px'
   renderer.domElement.style.cursor = 'grab'
   renderer.domElement.id = 'three'
+  renderer.domElement.class
+    ? (renderer.domElement.class = 'filter grayscale blur-sm contrast-200')
+    : (renderer.domElement.className = 'filter grayscale blur-sm contrast-200')
 
+  //   canvas.className = 'filter grayscale blur-sm contrast-200'
   document.body.appendChild(renderer.domElement)
 }
 

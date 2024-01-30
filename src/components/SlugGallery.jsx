@@ -25,7 +25,7 @@ const SlugGallery = ({ data }) => {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="relative flex flex-col z-10">
       <div className="flex flex-col justify-center items-center relative pt-[96px] md:pt-[56px]">
         <div className="h-full flex flex-col">
           {data.titleImage ? (

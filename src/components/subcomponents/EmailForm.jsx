@@ -34,15 +34,14 @@ export default function EmailForm() {
       )
   }
 
-  function filter() {
-    const canvas = document.getElementsByTagName('canvas')[0]
+  // function filter() {
+  //   const canvas = document.getElementsByTagName('canvas')[0]
 
-    canvas.className = 'filter grayscale blur-md contrast-200'
+  //   canvas.className = 'filter grayscale blur-md contrast-200'
 
-    
-  }
+  // }
 
-  filter()
+  // filter()
   return (
     <>
       <div className="relative z-10 flex flex-col-reverse items-center justify-center h-screen p-5">
