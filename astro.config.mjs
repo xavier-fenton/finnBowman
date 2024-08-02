@@ -14,7 +14,6 @@ export default defineConfig({
     apiVersion: '2023-02-08',
     useCdn: true,
     studioBasePath: '/admin',
-    perspective: 'previewDrafts' // 'raw' | 'published' | 'previewDrafts'
   }), react()],
   adapter: vercel()
 });
