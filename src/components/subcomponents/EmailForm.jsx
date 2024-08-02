@@ -9,11 +9,10 @@ export default function EmailForm() {
 
   const sendEmail = (e) => {
     e.preventDefault()
-
     emailjs
       .sendForm(
-        'service_8ihmqfv',
-        'template_yejdewr',
+        'service_q1plabm',
+        'template_n9s2a0b',
         form.current,
         'XgrmG1fdI59ZO5GIi'
       )
@@ -34,14 +33,7 @@ export default function EmailForm() {
       )
   }
 
-  // function filter() {
-  //   const canvas = document.getElementsByTagName('canvas')[0]
 
-  //   canvas.className = 'filter grayscale blur-md contrast-200'
-
-  // }
-
-  // filter()
   return (
     <>
       <div className="relative z-10 flex flex-col-reverse items-center justify-center h-screen p-5">
@@ -59,7 +51,23 @@ export default function EmailForm() {
                 name="name"
                 id="name"
                 placeholder="Full Name"
-                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#4949496B7280] outline-none focus:border-[#acacac] focus:shadow-md"
+                className="w-full border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#4949496B7280] outline-none focus:border-[#acacac] focus:shadow-md"
+                required
+              />
+            </div>
+            <div className="mb-5">
+              <label
+                form="phone_number"
+                className="mb-3 block text-base font-medium text-[#494949]"
+              >
+                Phone Number
+              </label>
+              <input
+                type="phone_number"
+                name="phone_number"
+                id="phone_number"
+                placeholder="021 123 456"
+                className="w-full border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#4949496B7280] outline-none focus:border-[#acacac] focus:shadow-md"
                 required
               />
             </div>
@@ -75,7 +83,7 @@ export default function EmailForm() {
                 name="email"
                 id="email"
                 placeholder="example@domain.com"
-                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#4949496B7280] outline-none focus:border-[#acacac] focus:shadow-md"
+                className="w-full border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#4949496B7280] outline-none focus:border-[#acacac] focus:shadow-md"
                 required
               />
             </div>
@@ -91,7 +99,7 @@ export default function EmailForm() {
                 name="message"
                 id="message"
                 placeholder="Type your message"
-                className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#acacac] focus:shadow-md"
+                className="w-full resize-none border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#acacac] focus:shadow-md"
                 required
               ></textarea>
             </div>
@@ -104,7 +112,7 @@ export default function EmailForm() {
                 style={{ display: `${display}` }}
                 id="sent-notification"
               >
-                <div className="text-center font-semibold">email sent!</div>
+                <div className="text-xs text-center font-semibold">email sent!</div>
               </div>
             </div>
           </form>
