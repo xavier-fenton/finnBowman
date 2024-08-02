@@ -12,7 +12,7 @@ export default defineConfig({
     projectId: 'gdu2whhg',
     dataset: 'production',
     apiVersion: '2023-02-08',
-    useCdn: false,
+    useCdn: true,
     studioBasePath: '/admin',
     perspective: 'previewDrafts' // 'raw' | 'published' | 'previewDrafts'
   }), react()],

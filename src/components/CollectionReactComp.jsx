@@ -16,6 +16,7 @@ const shuffleArray = (array) => {
 const CollectionReactComp = () => {
   const [shuffledPage, setShuffledPage] = useState([])
   const [selectedImage, setSelectedImage] = useState(null)
+  
   useEffect(() => {
     const shuffledGallery = page.map((data) => ({
       ...data,
