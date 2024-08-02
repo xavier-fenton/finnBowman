@@ -26,8 +26,8 @@ const SlugGallery = ({ data }) => {
 
   return (
     <div className="relative flex flex-col z-10">
-      <div className="flex flex-col justify-center items-center relative pt-[96px] md:pt-[56px]">
-        <div className="h-full flex flex-col">
+      <div className="flex flex-col justify-center items-center relative pt-[40px]">
+        <div className="h-full w-full flex flex-col">
           {data.titleImage ? (
             <img
               src={`${urlFor(data.titleImage.options.source)}`}
@@ -38,7 +38,7 @@ const SlugGallery = ({ data }) => {
               {youtube_source ? (
                 <>
                   <IFrameComponent youtube_source={youtube_source.url} />
-                  <div className="font-bold">{data.title}</div>
+                  <div className="pt-[10px] text-[14px]">{data.title}</div>
                 </>
               ) : (
                 <div className="font-bold"></div>
@@ -46,7 +46,6 @@ const SlugGallery = ({ data }) => {
             </div>
           )}
         </div>
-
         <div className="pb-[20px]">{data.brandDescription}</div>
       </div>
 
@@ -57,7 +56,7 @@ const SlugGallery = ({ data }) => {
             return (
               <img
                 key={index}
-                className="w-[100%] h-[50%] object-cover cursor-pointer pt-2"
+                className="object-cover object-center cursor-pointer"
                 src={`${source}`}
                 alt={`Gallery Image ${index}`}
                 onClick={() => openImage({ original: source })}

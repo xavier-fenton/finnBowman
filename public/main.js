@@ -31,8 +31,6 @@ function initThreeJs() {
   function setStyletoCanvas(renderer) {
     renderer.domElement.style.position = 'fixed'
     renderer.domElement.style.top = '0px'
-    renderer.domElement.style.paddingLeft = '20px'
-    renderer.domElement.style.paddingRight = '20px'
     renderer.domElement.style.cursor = 'grab'
     renderer.domElement.id = 'three'
     renderer.domElement.class
